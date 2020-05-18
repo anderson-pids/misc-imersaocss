@@ -9,7 +9,6 @@ body {
   background-image: url('../img/fundo.jpg');
   background-size: auto 100vh;
   font-family: 'Source Code Pro', monospace;
-  /* filter: blur(1px); */
   height: 100vh;
   font-size: 10px;
 }
@@ -24,6 +23,13 @@ body {
 /* breakpoint  */
 @media (min-width: 600px) {
   body {
+    font-size: 18px;
+  }
+}
+
+/* breakpoint */
+@media (min-width: 1200px) {
+  body {
     font-size: 20px;
   }
 }
@@ -35,12 +41,23 @@ header {
   align-items: center;
 }
 
-.menu {
-  background-color: beige;
-  position: fixed;
-  width: 100vw;
-  top: 0;
+.titulo {
+  
+  animation: linear 2s animacaoTitulo;
 }
+
+/* criando uma animacao */
+@keyframes animacaoTitulo {
+  from {
+    transform: scale(0.2) translateY(50vh);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
 
 a {
   color: teal;
@@ -51,9 +68,12 @@ a:hover {
   text-decoration: underline;
 }
 
-.menu a {
-  padding: 10px 20px;
-  display: block;
+.menu {
+  background-color: beige;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 1;
 }
 
 .menu ul {
@@ -63,6 +83,19 @@ a:hover {
 
 .menu li {
   list-style: none;
+}
+
+.menu a {
+  padding: 10px 20px;
+  display: block;
+  transition: background-color 2s, color 2s;
+}
+
+.menu a:active,
+.menu a:hover {
+  background-color: teal;
+  color: whitesmoke;
+  /* text-decoration: none; */
 }
 
 .site-subtitle,
@@ -83,11 +116,13 @@ a:hover {
   line-height: 2em;
 }
 
+.contato,
 .portfolio {
   padding: 2em;
-  height: 100vh;
+  min-height: 100vh;
 }
 
+.contato h2,
 .portfolio h2 {
   color: whitesmoke;
   font-family: 'Press Start 2P', cursive;
@@ -109,10 +144,9 @@ a:hover {
 @media (min-width: 880px) {
   .portfolio .grid {
     align-content: center;
-    grid-template-columns: repeat(3,240px);
+    grid-template-columns: repeat(3,260px);
     justify-content: center;
-    height: calc(100vh - 8em);
-    /* background-color: yellow; */
+    height: calc(100vh - 8em - 48px);
   }
 }
 
@@ -126,4 +160,26 @@ a:hover {
   object-fit: cover;
   object-position: left bottom;
   border-radius: 20%;
+  transition: transform 1s;
+}
+
+.img-portfolio:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.contato .icons {
+  text-align: center;
+}
+
+.contato a {
+  color: whitesmoke;
+  font-size: 4em;
+  transition: text-shadow 1s;
+}
+
+/* a:active - momento do clique ou touch - onpress, eventPressIn, eventPressOut */
+.contato a:active,
+.contato a:hover {
+  text-decoration: none;
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
 }
