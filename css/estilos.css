@@ -158,11 +158,6 @@ a:hover {
   margin-bottom: 0.5em;
   /* border-radius: 10%; */
   clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
-
-  /* clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%); */
-  /* clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); */
-  /* clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); */
-  /* clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%); */
 }
 
 .portfolio .grid {
@@ -173,6 +168,7 @@ a:hover {
 @media (min-width: 560px) {
   .portfolio .grid {
     grid-template-columns: 240px 240px;
+    background-color: red;
   }
 }
 
@@ -191,15 +187,44 @@ a:hover {
 
 .img-portfolio {
   height: 180px;
-  width: 240px;
+  width: 100%;
   object-fit: cover;
   object-position: left bottom;
-  border-radius: 20%;
+  /* border-radius: 20%; */
   transition: transform 1s;
 }
 
-.img-portfolio:hover {
+/* .img-portfolio:hover {
   transform: scale(1.2) rotate(5deg);
+} */
+
+.flip-card {
+  perspective: 400px;
+}
+
+.card {
+  /* position: relative; */
+  transform-style: preserve-3d;
+  transition: transform 3s;
+}
+
+.flip-card:hover .card:hover{
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card-back {
+  background-color: white;
+  height: 180px;
+  width: 100%;
+  transform: rotateY(180deg);
 }
 
 .contato .icons {
